@@ -1,0 +1,72 @@
+﻿@model DSTeachers.ViewModels.HomeVM
+@{
+    ViewData["Title"] = "Home";
+    string textoNormalizado(string texto)
+    {
+        return texto.ToLower().Replace(' ', '_');
+    }
+}
+
+
+<div class="pt-5 container">
+    <div class="row">
+        <div class="col mx-auto text-center">
+            <h1 class="display-4 text-white">Playlist DS</h1>
+            <div class="my-3">
+                <button id="btn-all" class="btn btn-md my-2 text-white bg-secondary btn-filter" onclick="filter('')"
+                    type="button">
+                    Ver Todos
+                </button>
+
+                @foreach (var genero in Model.Generos)
+                {
+                    <button id="btn-@textoNormalizado(genero.Nome)" class="btn btn-sm my-2 text-white btn-filter"
+                        onclick="filter('@textoNormalizado(genero.Nome)')" type="button">@genero.Nome</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+        @foreach (var professor in Model.Professores)
+        {
+            <div class="col @textoNormalizado(professor.AudioGenero.Nome)">
+                <div class="card @textoNormalizado(professor.AudioGenero.Nome)">
+                    <a asp-action="Details" asp-route-id="@professor.Id" class="text-decoration-none">
+                        <img src="@professor.Foto" class="card-img-top" alt="@professor.Nome" />
+                    </a>
+                    <div class="card-body text-center">
+                        <a asp-action="Details" asp-route-id="@professor.Id" class="text-decoration-none">
+                            <h5 class="card-text mb-1 text-white">@professor.Nome</h5>
+                        </a>
+                        <a asp-action="Details" asp-route-id="@professor.Id" class="text-decoration-none">
+                            <h3 class="card-title my-3 text-white">@professor.Apelido</h3>
+                        </a>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-@textoNormalizado(professor.AudioGenero.Nome) text-white">
+                                @professor.AudioGenero.Nome
+                            </button>
+                            <i id='@string.Concat("icone", professor.Id)'
+                                class="bi bi-play-circle fs-2 text-white cursor-pointer"
+                                onclick="toggleAudio(@professor.Id)"></i>
+                            <audio id='@string.Concat("audio", professor.Id)' src="@professor.Audio" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div id="zeroProfessor" class="col-lg-12 text-center d-none mt-5" style="height: 350px;">
+        <h1 class="my-3 text-danger">Nenhum Professor Encontrado</h1>
+    </div>
+</div>
+
+@section Styles {
+    <partial name="_StylePartial" model="Model.Generos">
+}
+
+@section Scripts
+{
+    <script src="~/js/site.js"></script>
+}

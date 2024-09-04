@@ -1,0 +1,13 @@
+@using DSTeachers.Models
+@model List<Genero>
+
+<style>
+    @foreach (Genero genero in Model)
+    {
+        string cor = genero.Cor.Replace("1)", "0.75)");
+        string nome = genero.Nome.ToLower().Replace(' ', '_');
+        @string.Concat("#btn-", nome, ", .btn-", nome, "{ background-color: ", genero.Cor, " }")
+        @string.Concat(".card.", nome, "{ background-color:", cor, " }")
+        @string.Concat(".card.", nome, ":hover{ border: 3px solid ", genero.Cor, " }")
+    }
+</style>
