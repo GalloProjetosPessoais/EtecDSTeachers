@@ -32,4 +32,8 @@ insert into professor values
     (1, 'José Antonio Gallo Junior', 'Gallo', '1981-08-05', '/img/professores/gallo.png', '/audio/gallo.mp3', 1),
     (2, 'Márcio Jesus de Morais', 'Márcio', '1975-09-20', '/img/professores/marcio.png', '/audio/marcio.mp3', 1),
     (3, 'Edriano Carlos Campana', 'Edriano', '1978-09-30', '/img/professores/edriano.png', '/audio/edriano.mp3', 3),
-    (4, 'Rosiene C. Tondelli Casale', 'Rose', '1975-02-05', '/img/professores/rosiene.png', '/audio/rosiene.mp3', 2);
+    (4, 'Rosiene C. Tondelli Casale', 'Rose', '1975-02-05', '/img/professores/rosiene.png', '/audio/rosiene.mp3', 2),
+    (5, 'Valdemir de Assis Pedro', 'Val', '1980-02-05', '/img/professores/valdemir.png', '/audio/valdemir.mp3', 2),
+    (6, 'Ronan Adriel Zenatti', 'Ronan', '1990-01-01', '/img/professores/ronan.png', '/audio/ronan.mp3', 4)
+    (7, 'Marcos Paulo Bressanin', 'Mortadela', '1980-01-01', '/img/professores/marcos.png', '/audio/marcos.mp3', 5),
+    (8, 'Everton Steiner Galli', 'Galli', '1981-01-01', '/img/professores/galli.png', '/audio/galli.mp3', 3);
